@@ -32,6 +32,7 @@ export default function Hobbies() {
         data={hobbies}
         keyExtractor={(item, index) => index.toString()}
         renderItem={({ item }) => <Text style={styles.text}>{item}</Text>}
+        scrollEnabled={false}
       />
     </View>
   );

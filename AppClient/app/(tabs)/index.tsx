@@ -7,8 +7,18 @@ import { ThemedView } from '@/components/ThemedView';
 import Profil from '@/components/Profil/Profil';
 import CounterExp from '@/components/CounterExp/CounterExp';
 import Hobbies from '@/components/Hobbies/Hobbies';
+import Formulaire from '@/components/Form/Form';
+import { useState } from 'react';
 
 export default function HomeScreen() {
+
+  const [profile, setProfile] = useState({
+    name: "Rodrigue",
+    email: "rodrigue.botte@gmail.com",
+    age: 35,
+    image:
+      "https://image.spreadshirtmedia.net/image-server/v1/compositions/T1310A2PA6156PT32X127Y125D188529612W6184H7531/views/1,width=550,height=550,appearanceId=2,backgroundColor=000000,noPt=true/barbe-banane-cheveux-chauves-coiffure-rigolo-t-shirt-sport-homme.jpg",
+  });
   return (
     <ParallaxScrollView
       headerBackgroundColor={{ light: "#A1CEDC", dark: "#1D3D47" }}
@@ -24,14 +34,11 @@ export default function HomeScreen() {
       </ThemedView>
 
       <ThemedView style={styles.stepContainer}>
-        <Profil
-          name="Rodrigue"
-          email="rodrigue.botte@gmail.com"
-          age={35}
-          image="https://image.spreadshirtmedia.net/image-server/v1/compositions/T1310A2PA6156PT32X127Y125D188529612W6184H7531/views/1,width=550,height=550,appearanceId=2,backgroundColor=000000,noPt=true/barbe-banane-cheveux-chauves-coiffure-rigolo-t-shirt-sport-homme.jpg"
+        <Profil {...profile}
         />
         <CounterExp />
         <Hobbies />
+        <Formulaire profile={profile} setProfile={setProfile} />
       </ThemedView>
     </ParallaxScrollView>
   );
