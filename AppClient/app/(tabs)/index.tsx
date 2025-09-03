@@ -1,12 +1,12 @@
 import { Image } from 'expo-image';
-import { Platform, StyleSheet } from 'react-native';
+import { StyleSheet } from 'react-native';
 
-import { HelloWave } from '@/components/HelloWave';
 import ParallaxScrollView from '@/components/ParallaxScrollView';
 import { ThemedText } from '@/components/ThemedText';
 import { ThemedView } from '@/components/ThemedView';
 import Profil from '@/components/Profil/Profil';
 import CounterExp from '@/components/CounterExp/CounterExp';
+import Hobbies from '@/components/Hobbies/Hobbies';
 
 export default function HomeScreen() {
   return (
@@ -30,7 +30,8 @@ export default function HomeScreen() {
           age={35}
           image="https://image.spreadshirtmedia.net/image-server/v1/compositions/T1310A2PA6156PT32X127Y125D188529612W6184H7531/views/1,width=550,height=550,appearanceId=2,backgroundColor=000000,noPt=true/barbe-banane-cheveux-chauves-coiffure-rigolo-t-shirt-sport-homme.jpg"
         />
-        <CounterExp/>
+        <CounterExp />
+        <Hobbies />
       </ThemedView>
     </ParallaxScrollView>
   );
