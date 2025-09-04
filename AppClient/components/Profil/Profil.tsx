@@ -4,7 +4,7 @@ import { View, Text, StyleSheet, Image } from "react-native";
 interface ProfilProps{
     name: string,
     email: string,
-    age: number,
+    age: string,
     image: string
 }
 

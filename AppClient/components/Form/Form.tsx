@@ -34,9 +34,8 @@ export default function Formulaire({profile, setProfile}: any) {
           rules={{ required: false }}
           render={({ field: { onChange, value } }) => (
             <TextInput
-              placeholder="votre email"
+              placeholder={value}
               onChangeText={onChange}
-              value={value}
               style={styles.input}
               placeholderTextColor="white"
             />
@@ -48,9 +47,8 @@ export default function Formulaire({profile, setProfile}: any) {
           rules={{ required: false }}
           render={({ field: { onChange, value } }) => (
             <TextInput
-              placeholder="votre age"
+              placeholder={value}
               onChangeText={onChange}
-              value={value}
               style={styles.input}
               placeholderTextColor="white"
             />
@@ -62,9 +60,8 @@ export default function Formulaire({profile, setProfile}: any) {
           rules={{ required: false }}
           render={({ field: { onChange, value } }) => (
             <TextInput
-              placeholder="votre photo"
+              placeholder={value}
               onChangeText={onChange}
-              value={value}
               style={styles.input}
               placeholderTextColor="white"
             />

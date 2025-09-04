@@ -15,7 +15,7 @@ export default function HomeScreen() {
   const [profile, setProfile] = useState({
     name: "Rodrigue",
     email: "rodrigue.botte@gmail.com",
-    age: 35,
+    age: '35',
     image:
       "https://image.spreadshirtmedia.net/image-server/v1/compositions/T1310A2PA6156PT32X127Y125D188529612W6184H7531/views/1,width=550,height=550,appearanceId=2,backgroundColor=000000,noPt=true/barbe-banane-cheveux-chauves-coiffure-rigolo-t-shirt-sport-homme.jpg",
   });
