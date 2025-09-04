@@ -1,94 +1,94 @@
 import React from "react";
 import { Controller, useForm } from "react-hook-form";
-import { Button, StyleSheet, TextInput, View } from "react-native";
-import Profil from "../Profil/Profil";
-import {  } from "../Profil/Profil";
+import {
+  Button,
+  StyleSheet,
+  TextInput,
+  Text,
+  View,
+  TouchableOpacity,
+} from "react-native";
 
-export default function Formulaire({profile, setProfile}: any) {
+export default function Formulaire({ profile, setProfile }: any) {
+  const { control, handleSubmit } = useForm({
+    defaultValues: profile,
+  });
 
-    const { control, handleSubmit } = useForm({
-        defaultValues: profile,
-    });
+  const onSubmit = (data: any) => setProfile(data);
 
-    const onSubmit = (data: any) => setProfile(data);
-        
-    
-    
-    return (
-      <View style={styles.container}>
+  return (
+    <View style={styles.card}>
+      <Text style={styles.title}>Modifier vos informations</Text>
+
+      {["name", "email", "age", "image"].map((field) => (
         <Controller
+          key={field}
           control={control}
           rules={{ required: false }}
           render={({ field: { onChange, value } }) => (
             <TextInput
-              placeholder={value}
+              placeholder={value || `Votre ${field}`}
+              value={value}
               onChangeText={onChange}
               style={styles.input}
-              placeholderTextColor="white"
+              placeholderTextColor="#A1CEDC"
             />
           )}
-          name="name"
+          name={field}
         />
-        <Controller
-          control={control}
-          rules={{ required: false }}
-          render={({ field: { onChange, value } }) => (
-            <TextInput
-              placeholder={value}
-              onChangeText={onChange}
-              style={styles.input}
-              placeholderTextColor="white"
-            />
-          )}
-          name="email"
-        />
-        <Controller
-          control={control}
-          rules={{ required: false }}
-          render={({ field: { onChange, value } }) => (
-            <TextInput
-              placeholder={value}
-              onChangeText={onChange}
-              style={styles.input}
-              placeholderTextColor="white"
-            />
-          )}
-          name="age"
-        />
-        <Controller
-          control={control}
-          rules={{ required: false }}
-          render={({ field: { onChange, value } }) => (
-            <TextInput
-              placeholder={value}
-              onChangeText={onChange}
-              style={styles.input}
-              placeholderTextColor="white"
-            />
-          )}
-          name="image"
-        />
-        <Button title="Valider les changements" onPress={handleSubmit(onSubmit)} />
-      </View>
-    );
+      ))}
+
+      <TouchableOpacity
+        style={styles.submitButton}
+        onPress={handleSubmit(onSubmit)}
+      >
+        <Text style={styles.submitText}>Valider les changements</Text>
+      </TouchableOpacity>
+    </View>
+  );
 }
 
 const styles = StyleSheet.create({
-  container: {
-    display: "flex",
-    flexDirection: "column",
+  card: {
+    backgroundColor: "#1D3D47",
+    padding: 20,
+    borderRadius: 15,
+    marginVertical: 10,
+    width: "90%",
     alignItems: "center",
+    shadowColor: "#000",
+    shadowOffset: { width: 0, height: 4 },
+    shadowOpacity: 0.3,
+    shadowRadius: 5,
+    elevation: 6,
+  },
+  title: {
+    fontSize: 18,
+    fontWeight: "600",
+    color: "#A1CEDC",
+    marginBottom: 15,
     textAlign: "center",
   },
   input: {
-    height: 40,
-    margin: 12,
+    width: "100%",
+    height: 45,
+    borderColor: "#A1CEDC",
     borderWidth: 1,
-    padding: 10,
-      borderColor: "white",
-    color:'white'
-  },
-  text: {
+    borderRadius: 10,
+    paddingHorizontal: 10,
+    marginBottom: 12,
     color: "white",
+  },
+  submitButton: {
+    backgroundColor: "#4CAF50",
+    paddingVertical: 12,
+    paddingHorizontal: 25,
+    borderRadius: 10,
+    marginTop: 10,
+  },
+  submitText: {
+    color: "white",
+    fontWeight: "bold",
+    textAlign: "center",
   },
 });
