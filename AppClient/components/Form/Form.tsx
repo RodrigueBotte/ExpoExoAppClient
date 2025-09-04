@@ -28,7 +28,6 @@ export default function Formulaire({ profile, setProfile }: any) {
           render={({ field: { onChange, value } }) => (
             <TextInput
               placeholder={value || `Votre ${field}`}
-              value={value}
               onChangeText={onChange}
               style={styles.input}
               placeholderTextColor="#A1CEDC"

@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import {
+  Button,
   FlatList,
   StyleSheet,
   Text,
@@ -17,6 +18,10 @@ export default function Hobbies() {
     setHobbies([...hobbies, input.trim()]);
     setInput("");
   };
+
+  const handleDelete = (indexToRemove: number) => {
+    setHobbies(hobbies.filter((_, index) => index !== indexToRemove));
+  }
 
   return (
     <View style={styles.card}>
@@ -37,10 +42,13 @@ export default function Hobbies() {
       {hobbies.length > 0 && (
         <FlatList
           data={hobbies}
-          keyExtractor={(item, index) => index.toString()}
-          renderItem={({ item }) => (
+          keyExtractor={(_, index) => index.toString()}
+          renderItem={({ item, index }) => (
             <View style={styles.hobbyItem}>
               <Text style={styles.hobbyText}>{item}</Text>
+              <TouchableOpacity onPress={() => handleDelete(index)}>
+                <Text style={styles.deleteText}>X</Text>
+              </TouchableOpacity>
             </View>
           )}
           scrollEnabled={false} // éviter les problèmes de ScrollView imbriqués
@@ -102,9 +110,16 @@ const styles = StyleSheet.create({
     borderRadius: 8,
     marginVertical: 5,
     width: "100%",
+    flexDirection: 'row',
+    gap: 15
   },
   hobbyText: {
     color: "#fff",
     fontSize: 14,
+  },
+  deleteText: {
+    color: "red",
+    fontWeight: "bold",
+    fontSize: 16,
   },
 });
